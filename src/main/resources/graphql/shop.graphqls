@@ -1,0 +1,25 @@
+type Shop {
+    id: ID!
+    quantity: Int!
+    status: String!
+    client: Client
+    product: Product
+}
+
+input ShopDTO {
+    id: ID
+    quantity: Int
+    status: String
+    clientId: ID!
+    productId: ID!
+}
+
+extend type Query {
+    purchase(id: ID!): Shop!
+    purchases: [Shop]!
+}
+
+extend type Mutation {
+    savePurchase(shopDTO: ShopDTO): Shop!
+    deletePurchase(id: ID!): ID
+}

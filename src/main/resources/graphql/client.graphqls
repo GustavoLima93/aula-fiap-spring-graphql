@@ -1,0 +1,21 @@
+type Client {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+input ClientDTO {
+    id: ID
+    name: String
+    email: String
+}
+
+extend type Mutation {
+    saveClient(clientDTO: ClientDTO!): Client
+    deleteClient(id: ID!): ID
+}
+
+extend type Query {
+    client(id: ID!): Client!
+    clients: [Client]!
+}
